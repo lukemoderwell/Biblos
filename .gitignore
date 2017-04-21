@@ -1,0 +1,11 @@
+bower_components
+node_modules
+npm-debug.log
+npm-debug.log.*
+.DS_STORE
+*.swp
+dist/
+.idea/
+.vscode/
+!src/img/icon
+yarn-error.log
