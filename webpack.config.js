@@ -34,25 +34,19 @@ module.exports = {
                 test: /\.js$/,
                 loader: "source-map-loader"
             },
-            // {
-            //     test: /\.s?css$/,
-            //     use: ExtractTextPlugin.extract({
-            //         fallback: 'style-loader',
-            //         //resolve-url-loader may be chained before sass-loader if necessary
-            //         use: ['css-loader', 'sass-loader'],
-            //         // publicPath: '../'
-            //     }),
-            // },
-        ]
-    },
-
-    // When importing a module whose path matches one of the following, just
-    // assume a corresponding global variable exists and use that instead.
-    // This is important because it allows us to avoid bundling all of our
-    // dependencies, which allows browsers to cache those libraries between builds.
-    // externals: {
-    //     'react': 'React',
-    //     'react-dom': 'ReactDOM',
-    // },
-    //plugins: [new HtmlWebpackPlugin()]
-};
+            {
+                test: /\.s?css$/,
+                use: [{
+                    loader: 'style-loader',
+                }, {
+                    loader: 'css-loader', options: {
+                        sourceMap: true
+                    },
+                }, {
+                    loader: 'sass-loader', options: {
+                        sourceMap: true
+                    }
+                }]
+            }]
+        }
+    };
